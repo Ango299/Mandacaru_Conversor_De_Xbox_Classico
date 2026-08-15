@@ -163,34 +163,6 @@ acontecer de novo, o logcat mostre exatamente onde travou em vez de ficar
 sem nenhuma pista (o log que você mandou não tinha nenhuma linha nossa,
 só ruído do sistema Android).
 
-## Limitações e pontos de atenção honestos
-
-- **Eu não consegui compilar nem testar este projeto de ponta a ponta**
-  (sem acesso à internet para baixar dependências do Cargo/Gradle neste
-  ambiente). Revisei tudo com cuidado, mas pode aparecer algum erro na
-  primeira compilação — me manda a mensagem exata que eu ajusto.
-- O cancelamento é cooperativo (checado a cada gravação/arquivo, não é
-  instantâneo cravado).
-- As etapas de cópia SAF ⇄ staging ainda não checam o cancelamento — só a
-  conversão nativa em si.
-- Serviços em primeiro plano do tipo `dataSync` têm um limite de tempo
-  total de execução por período de 24h no Android 14+ (pensado para
-  operações demoradas normais de sincronização/cópia; jogos muito grandes
-  dificilmente chegariam perto do limite, mas é bom saber que existe).
-- A permissão de notificação (Android 13+) é pedida assim que o app abre;
-  se o usuário negar, o app continua funcionando normalmente — só não
-  mostra as notificações de progresso/conclusão.
-- O ícone do app ainda é um ícone padrão do sistema
-  (`android.R.drawable.ic_menu_save`); se quiser um ícone personalizado
-  (ex.: um mandacaru), é só pedir.
-
-## Próximos passos sugeridos (se quiser evoluir)
-
-- Ícone personalizado do app (launcher icon).
-- Trocar os ícones ilustrativos da aba "Como Usar" por capturas de tela
-  reais, depois que você compilar e rodar o app.
-- Tornar cancelável também as etapas de cópia SAF ⇄ staging.
-
 ## Licença e créditos
 
 O projeto está sob licença **MIT** (arquivo `LICENSE` na raiz) — qualquer
