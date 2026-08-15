@@ -46,16 +46,7 @@ plano.
   funcionalmente, então preferi não mexer para não arriscar quebrar
   referências internas sem necessidade. Se quiser mesmo trocar o pacote,
   é só pedir.
-
-### Sobre as "imagens" do tutorial
-
-Eu não tenho como gerar capturas de tela reais do seu app rodando (não
-consigo compilar/executar o Android Studio aqui). Em vez de imagens falsas
-ou inventadas, usei ícones do Material Design (pasta, lápis, play, sino,
-check, etc.) pra ilustrar cada passo de forma clara e consistente com o
-resto do app. Se depois de compilar você tirar prints de tela reais, me
-manda que eu troco os ícones pelas capturas de verdade na aba de tutorial.
-
+  
 ## O que você precisa instalar antes de compilar
 
 O Android Studio sozinho **não compila Rust**. Você precisa, uma única vez:
@@ -151,40 +142,9 @@ podia mostrar vários GB em cache mesmo depois de cancelar. Também corrigi
 isso: agora a limpeza da staging roda sempre, em um bloco `finally`,
 não importa se a conversão termina com sucesso, cancelamento ou erro.
 
-Se isso já tiver acontecido com você antes desta correção, o cache
-antigo preso não vai se limpar sozinho — é só ir em
-`Configurações → Apps → Mandacaru → Armazenamento → Limpar cache`
-(a mesma tela que você já usou) uma vez, e a partir daí o app deve manter
-o cache limpo automaticamente entre conversões.
-
 Também adicionei logs (`Log.i`, tag `"Mandacaru"`) nos pontos-chave do
 `ConversionService` e do cancelamento, para que, se algo parecido
 acontecer de novo, o logcat mostre exatamente onde travou em vez de ficar
-sem nenhuma pista (o log que você mandou não tinha nenhuma linha nossa,
-só ruído do sistema Android).
-
-## Licença e créditos
-
-O projeto está sob licença **MIT** (arquivo `LICENSE` na raiz) — qualquer
-um pode usar, modificar e redistribuir, inclusive em outro projeto,
-mantendo o aviso de copyright.
-
-Isso inclui a parte mais importante do app: o motor de conversão real
-(empacotar/extrair XDVDFS) **não foi escrito do zero por mim** — é o
-código-fonte do projeto **[xdvdfs](https://github.com/antangelo/xdvdfs)**,
-de **antangelo**, vendorizado em `rust/xdvdfs-core/` e usado aqui através
-de uma camada JNI (`rust/xdvdfs-jni/`) escrita para este app. O
-`xdvdfs` original também é MIT (copyright 2023 antangelo), e o aviso de
-licença dele está preservado tanto em `rust/xdvdfs-core/LICENSE` quanto
-reproduzido no `LICENSE` da raiz, como a licença exige.
-
-**Antes de publicar no GitHub, edite o arquivo `LICENSE`** e troque
-`[SEU NOME AQUI]` pelo seu nome ou usuário do GitHub — é o único campo que
-deixei em aberto de propósito, já que essa parte da licença é sua.
-
-Se quiser, vale colocar uma linha parecida com essa no `README` do
-repositório do GitHub também (além deste `LEIA-ME.md`), já que é o
-primeiro lugar que quem visitar o projeto vai ver:
-
+sem nenhuma pista.
 > Este projeto usa o [xdvdfs](https://github.com/antangelo/xdvdfs) (MIT,
 > © antangelo) como motor de leitura/escrita do formato XDVDFS.
