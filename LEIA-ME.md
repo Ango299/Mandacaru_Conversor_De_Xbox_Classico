@@ -5,23 +5,6 @@ Conversor Xbox Clássico ⇄ Android: **Empacotar** (Pasta → .iso XDVDFS) e
 tutorial embutida, progresso real, notificações e conversão em segundo
 plano.
 
-## ⚠️ Correção em relação ao que estava no seu `leia-primeiro.txt` original
-
-Seu raciocínio sobre Jetpack Compose e SAF (`Intent.ACTION_OPEN_DOCUMENT_TREE`
-/ `Intent.ACTION_OPEN_DOCUMENT`) estava certo. O ponto que eu mudei foi a
-**engine de conversão**:
-
-- O texto sugeria usar o **extract-xiso em C** via NDK.
-- Eu usei, em vez disso, o **xdvdfs em Rust** (o outro zip que você mandou),
-  compilado para Android com `cargo-ndk`.
-
-Motivo: `xdvdfs-core` já é uma **biblioteca** (não uma ferramenta de linha de
-comando) com o algoritmo XDVDFS completo pronto para reaproveitar — leitura
-E escrita, árvore AVL, tudo. O `extract-xiso.c` foi escrito como programa de
-terminal para PC, então portá-lo exigiria reescrever toda a entrada/saída de
-arquivos praticamente do zero. Com o Rust, a "caixa preta" de bytes que o
-texto mencionava já vem pronta e funcional — não é um placeholder simulado.
-
 ## O que já está pronto
 
 - Interface em Compose com **3 abas**: Empacotar, Extrair e **Como Usar**
