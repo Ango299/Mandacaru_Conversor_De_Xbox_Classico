@@ -1,0 +1,17 @@
+[package]
+name = "xdvdfs-jni"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+# cdylib gera o .so que o Android carrega via System.loadLibrary("xdvdfs_jni")
+crate-type = ["cdylib"]
+
+[dependencies]
+jni = "0.21"
+xdvdfs = { path = "../xdvdfs-core", default-features = false, features = [
+    "std",
+    "read",
+    "write",
+    "sync",
+] }

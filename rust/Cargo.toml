@@ -1,0 +1,11 @@
+[workspace]
+members = [
+  "xdvdfs-core",
+  "xdvdfs-jni",
+]
+resolver = "2"
+
+[profile.release]
+strip = "debuginfo"
+lto = true
+panic = "unwind"
